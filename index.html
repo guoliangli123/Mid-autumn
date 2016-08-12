@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>解救玉兔</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="full-screen" content="true" />
+		<meta name="screen-orientation" content="portrait" />
+		<meta name="x5-fullscreen" content="true" />
+		<meta name="360-fullscreen" content="true" />
+		<link rel="stylesheet" type="text/css" href="css/style.css"/>
+
+	</head>
+	<body>
+		
+		<!--<div id="carrot_main" class="carrot_main">
+			<span id="percentage"></span>
+			<div class="carrot">
+				<div id="carrot_full"></div>
+			</div>
+			<div class="carrot_bg">
+				
+			</div>
+		</div>-->
+<!--自定义加载动画-->
+	<!--<div class="index">-->
+		<div class="spinner" id="spinner">
+		  <div class="rect1"></div>
+		  <div class="rect2"></div>
+		  <div class="rect3"></div>
+		  <div class="rect4"></div>
+		  <div class="rect5"></div>
+		</div>
+	<!--</div>-->
+		<!--预加载-->
+		<script src="js/imgLoader.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+//				mydiv = document.getElementById("carrot_full"); 
+				odiv = document.getElementById("spinner");
+//				var x = 0;
+//				function move(){
+//					x++;
+//					if(x==100) x=0;
+//					mydiv.style.height=x+"%";
+//				}
+		        
+//		        timer = setInterval(move,20);
+		
+			imgLoader(['img/carrot_empty.png','img/carrot_full.png','img/carrotBg.png','img/start.jpg','img/game_bar_bg.png', 'img/game_bar2.png', 'img/game_bg.jpg','img/game_intro.png',
+			'img/game_star.png','img/hammer.png','img/main_intro_text.png','img/main_intro.png','img/qrcode.png',
+			'img/rabbit.png','img/result_fail.jpg','img/result_success.jpg','img/share1.png','img/start_btn_btn.png',
+			'img/start_btn.png','img/start.jpg','img/stone.png','img/sweat.png','img/timebar.png','img/wolf_after_1.png',
+			'img/wolf_after_2.png','img/wolf_after_3.png','img/wolf_before_1.png','img/wolf_before_2.png','img/wolf_before_3.png',
+			'img/wolf1.png','img/wolf2.png','img/wolf3.png'
+			], function(percentage){
+		        console.log(percentage);
+//		        document.getElementById("percentage").innerHTML = parseInt(percentage*100) + '%';
+//				odiv = document.getElementById("carrot_main");			
+		    if(percentage==1){
+		    	odiv.style.display = 'none';
+		    	document.getElementById("main").style.display = 'block';
+		    	document.getElementsByClassName("wolf")[0].children[0].className="wolf1_ready";
+		    	document.getElementsByClassName("wolf")[0].children[1].className="wolf2_ready";
+		    	document.getElementsByClassName("wolf")[0].children[2].className="wolf3_ready";
+		    	document.getElementsByClassName("rabbit_1")[0].children[1].className="sweat_ready";
+		    	document.getElementById("start_btn").children[0].className="start_btn_ready";
+		    }
+		    });
+	</script>
+	<div class="main" id="main">
+		<div class="start">
+			<div id="start_btn">
+				<img src="img/start_btn.png"/>
+				<a href="javascript:void(0);;" id="startBtn"></a>
+			</div>
+			<div class="rabbit">
+				<div class="rabbit_1">
+					<img src="img/rabbit.png" />
+					<img src="img/sweat.png" />
+				</div>	
+			</div>
+			<div class="wolf">
+				<img src="img/wolf3.png"/>
+				<img src="img/wolf1.png"/>
+				<img src="img/wolf2.png"/>
+			</div>
+		</div>	
+		
+		<div class="introduce">
+			<div class="intro_bg"></div>
+			<div class="intro_main">
+				<img src="img/main_intro.png"/>
+				<img src="img/main_intro_text.png"/>
+			</div>
+		</div>
+
+		<div class="gameBox" id="gameBox">
+			<div class="game_intro"></div>
+		    <ul>
+		        <li><div></div><span><img src="img/stone.png"></span><img class="hammer" src="img/hammer.png"></li>
+		        <li><div></div><span><img src="img/stone.png"></span><img class="hammer" src="img/hammer.png"></li>
+		        <li><div></div><span><img src="img/stone.png"></span><img class="hammer" src="img/hammer.png"></li>
+		        <li><div></div><span><img src="img/stone.png"></span><img class="hammer" src="img/hammer.png"></li>
+		        <li><div></div><span><img src="img/stone.png"></span><img class="hammer" src="img/hammer.png"></li>
+		        <li><div></div><span><img src="img/stone.png"></span><img class="hammer" src="img/hammer.png"></li>
+		        <li><div></div><span><img src="img/stone.png"></span><img class="hammer" src="img/hammer.png"></li>
+		        <li><div></div><span><img src="img/stone.png"></span><img class="hammer" src="img/hammer.png"></li>
+		        <li><div></div><span><img src="img/stone.png"></span><img class="hammer" src="img/hammer.png"></li>
+		    </ul>
+		    <div class="bar">
+		    	<div class="game_bar_bg">
+		    		<div id="game_bar"></div>
+		    	</div>
+		    	<div class="game_star"></div>
+		    </div>
+		</div>
+		<div id="result_success" class="hide">
+			<div class="res_main">
+				<p>谢谢你,打跑了<span id="rate1">0%</span>的</p>
+				<p>大灰狼,成功解救了玉兔</p>
+			</div>
+			<div class="res_retry">
+				<img src="img/res_btn1.png"/>
+			</div>
+			<div class="res_share">
+				<img src="img/res_btn2.png"/>	
+			</div>
+		</div>
+		<div id="result_fail" class="hide">
+			<div class="res_main">
+				<p>啊哦,你只打跑了<span id="rate2">0%</span>的</p>
+				<p>大灰狼,解救玉兔失败</p>
+			</div>
+			<div class="res_retry">
+				<img src="img/res_btn1.png"/>
+			</div>
+			<div class="res_share">
+				<img src="img/res_btn2.png"/>	
+			</div>
+		</div>
+		<div class="share hide">
+			<div class="share_bg"></div>
+			<div class="share_main">
+				<img src="img/share1.png" />
+				<div>
+					<img src="img/qrcode.png" alt="" />
+					<p>薪理财出品&nbsp;&nbsp;长按二维码可关注</p>
+				</div>
+			</div>
+		</div>
+	</div>
+		<script src="js/game.js"></script>
+	</body>
+</html>
